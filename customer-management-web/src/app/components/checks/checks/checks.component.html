@@ -1,0 +1,47 @@
+<div class="container-xl">
+    <div class="table-responsive">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h4><b>{{checkbook.account?.customer?.name}} {{checkbook.account?.customer?.lastname}} -
+                                {{checkbook.number}}</b></h4>
+                    </div>
+                    <div class="col-sm-3">
+                        <a href="#" routerLink="/checkbooks" [state]=checkbook.account class="btn btn-success back"><i
+                                class='fas fa-arrow-circle-lef'></i>Atras</a>
+                    </div>
+                </div>
+            </div>
+            <table class="table table-striped table-hover table-bordered table-content">
+                <thead>
+                    <tr class="center-align">
+                        <th>No. Cheque</th>
+                        <th>Monto</th>
+                        <th>Estado</th>
+                        <th>Detalle Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let check of checkList" class="center-align">
+                        <td>{{ check.number }}</td>
+                        <td>{{ check.amount }}</td>
+                        <td>{{ check.currentStatus?.checkStatus?.name }}</td>
+                        <td>{{ check.currentStatus?.reason }}</td>
+                        <td>
+                            <button type="button" [disabled]="(check.currentStatus?.checkStatus?.code != 'activo')"
+                                (click)="changeStatusCheckConfirmation(check, 'bloqueado', 'Bloqueado')"><i
+                                    class='fas fa-trash-alt delete'></i></button>
+                            <button type="button" [disabled]="(check.currentStatus?.checkStatus?.code != 'activo')"
+                                (click)="collectCheck(check)"><i
+                                    class='fas fa-money-bill check'></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td *ngIf="checkList.length == 0" colspan="6">No existen cheques</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

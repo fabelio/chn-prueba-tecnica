@@ -1,0 +1,17 @@
+<h2 mat-dialog-title>Confirmación</h2>
+<mat-dialog-content>
+  <p>{{data.message}}</p>
+  <mat-form-field>
+    @if (data.collect) {
+        <mat-label>Monto</mat-label>
+    }@else {
+        
+        <mat-label>Motivo</mat-label>
+    } 
+    <input type="collect?'number':'text'" matInput [(ngModel)]="data.reason">
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No</button>
+  <button mat-button [mat-dialog-close]="data.reason" cdkFocusInitial>Si</button>
+</mat-dialog-actions>

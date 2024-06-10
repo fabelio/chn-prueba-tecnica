@@ -1,0 +1,118 @@
+<div class="container-xl">
+    <div class="table-responsive">
+      <div class="table-wrapper">
+        <div class="table-title">
+          <div class="row">
+            <div class="col-sm-6">
+              <h4><b>Nuevo Cliente</b></h4>
+            </div>
+            <div class="col-sm-6">
+              <a href="#" routerLink="/home" class="btn btn-success back"><i class='fas fa-arrow-circle-left'></i>
+                 Atras</a>
+            </div>
+          </div>
+        </div>
+        <form #customerForm="ngForm">
+          <div class="table-content">
+            <div class="form-group p-10 row">
+              <div class="col-sm-3">
+                <label for="Name" class="p-t-b-10">Nombre<span class="requiredStar">*</span></label>
+              </div>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="Name" required maxlength="255"
+                  [(ngModel)]="customer.name" name="Name" #Name="ngModel">
+                <div *ngIf="Name.errors && isSubmitted" class="alert alert-danger validationError">
+                  <div [hidden]="!Name.errors['required']">
+                    Nombre es obligatorio
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group p-10 row">
+              <div class="col-sm-3">
+                <label for="LastName" class="p-t-b-10">Apellido<span class="requiredStar">*</span></label>
+              </div>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="LastName" required maxlength="255"
+                  [(ngModel)]="customer.lastname" name="LastName" #LastName="ngModel">
+                <div *ngIf="LastName.errors && isSubmitted" class="alert alert-danger validationError">
+                  <div [hidden]="!LastName.errors['required']">
+                    Apellido es requerido
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group p-10 row">
+                <div class="col-sm-3">
+                  <label for="Identification" class="p-t-b-10">ID<span class="requiredStar">*</span></label>
+                </div>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="Identification" required maxlength="255"
+                    [(ngModel)]="customer.identification" name="Identification" #Identification="ngModel">
+                  <div *ngIf="Identification.errors && isSubmitted" class="alert alert-danger validationError">
+                    <div [hidden]="!Identification.errors['required']">
+                      Identificacion es obligatorio
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <div class="form-group p-10 row">
+              <div class="col-sm-3">
+                <label class="p-t-b-10">Correo<span class="requiredStar">*</span></label>
+              </div>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="Email" maxlength="255"
+                  [(ngModel)]="customer.email" name="Email" #Email="ngModel"
+                  pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9]{2,3}$">
+                <div *ngIf="Email.errors && isSubmitted" class="alert alert-danger validationError">
+                  <div [hidden]="!Email.errors['required']">
+                    Email is required
+                  </div>
+                  <div [hidden]="!Email.errors['touched'] && !Email.errors['pattern']">
+                    Email is invalid
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group p-10 row">
+              <div class="col-sm-3">
+                <label class="p-t-b-10">Fecha nacimiento<span class="requiredStar">*</span></label>
+              </div>
+              <div class="col-sm-9">
+                <input type="date" class="form-control" id="Birthdate" [(ngModel)]="customer.birthdate" name="Birthdate"
+                  #Birthdate="ngModel">
+                <div *ngIf="Birthdate.errors && isSubmitted" class="alert alert-danger validationError">
+                  <div [hidden]="!Birthdate.errors['required']">
+                    Address is required
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group p-10 row">
+              <div class="col-sm-3">
+                <label class="p-t-b-10">Telefono<span class="requiredStar">*</span></label>
+              </div>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="Phone" maxlength="10"
+                  [(ngModel)]="customer.phone" name="Phone" #Phone="ngModel" pattern="^\d{8}$">
+                <div *ngIf="Phone.errors && isSubmitted" class="alert alert-danger validationError">
+                  <div [hidden]="!Phone.errors['required']">
+                    Phone is required
+                  </div>
+                  <div [hidden]="!Phone.errors['touched'] && !Phone.errors['pattern']">
+                    Phone is invalid
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="table-footer">
+            <button class="btn btn-success" (click)="createCustomer(customerForm.form.valid)">
+            <div *ngIf="!customer.id">Crear</div>    
+            <div *ngIf="customer.id">Actualizar</div>    
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

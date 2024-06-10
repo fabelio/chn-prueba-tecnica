@@ -1,0 +1,60 @@
+<div class="container-xl">
+    <div class="table-responsive">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h4><b>{{account.customer?.name}} {{account.customer?.lastname}} - Cuenta No.
+                                {{account.number}}</b></h4>
+                    </div>
+                    <div class="col-sm-3">
+                        <a href="#" routerLink="/accounts" [state]=account.customer class="btn btn-success back"><i
+                                class='fas fa-arrow-circle-lef'></i>Atras</a>
+                    </div>
+                    <div class="col-sm-3">
+                        <button class="btn btn-success" (click)="createCheckbook()">
+                            <i class='fas fa-plus-circle'></i><span> Agregar Chequera</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <table class="table table-striped table-hover table-bordered table-content">
+                <thead>
+                    <tr class="center-align">
+                        <th>No. Chequera</th>
+                        <th>Cantidad de Cheques</th>
+                        <th>Estado</th>
+                        <th>Detalle Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let checkbook of checkbookList" class="center-align">
+                        <td>{{ checkbook.number }}</td>
+                        <td>{{ checkbook.checkQuantity }}</td>
+                        <td>{{ checkbook.currentStatus?.checkbookStatus?.name }}</td>
+                        <td>{{ checkbook.currentStatus?.reason }}</td>
+                        <td>
+                            <a href="#" mat-button
+                                [disabled]="(checkbook.currentStatus?.checkbookStatus?.code=='bloqueada')"
+                                [routerLink]="['/checks']" [state]=checkbook class="btn"><i
+                                    class='fas fa-eye view'></i></a>
+                            <a href="#" mat-button
+                                [disabled]="(checkbook.currentStatus?.checkbookStatus?.code=='bloqueada')"
+                                [routerLink]="['/checkbook']" [state]=checkbook class="btn"><i
+                                    class="fa fa-edit edit"></i></a>
+                            <button type="button" [disabled]="(checkbook.currentStatus?.checkbookStatus?.code=='bloqueada')"
+                                (click)="changeStatusCheckbookConfirmation(checkbook, 'bloqueada', 'Bloqueada')"
+                                class="btn"><i class='fas fa-trash-alt delete'></i></button>
+                            <button type="button" [disabled]="(checkbook.currentStatus?.checkbookStatus?.code=='activa')"
+                                (click)="changeStatusCheckbookConfirmation(checkbook, 'activa', 'Activa')" class="btn"><i
+                                    class='fas fa-solid fa-check check'></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td *ngIf="checkbookList.length == 0" colspan="6">No existen chequeras</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
