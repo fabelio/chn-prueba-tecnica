@@ -9,7 +9,8 @@ import { CreateCheckbooksComponent } from './components/checksbooks/create-check
 import { ChecksComponent } from './components/checks/checks/checks.component';
 
 const routes: Routes = [
-  { path: '/', component: CustomersComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: CustomersComponent },
   { path: 'customer', component: CreateCustomersComponent },
   { path: 'accounts', component: AccountsComponent },
   { path: 'account', component: CreateAccountsComponent },

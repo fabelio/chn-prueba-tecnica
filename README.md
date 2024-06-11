@@ -9,5 +9,5 @@ docker-compose up --no-deps --build --force-recreate
 Completed: ALTER DATABASE OPEN
 ![alt text](end-db.png)
 
-#para acceder a la aplicacion we se accede a travez del puerto 4200
+#para acceder a la aplicacion we se accede por el puerto 4200
 http://localhost:4200
