@@ -38,10 +38,10 @@
                                 [disabled]="(checkbook.currentStatus?.checkbookStatus?.code=='bloqueada')"
                                 [routerLink]="['/checks']" [state]=checkbook class="btn"><i
                                     class='fas fa-eye view'></i></a>
-                            <a href="#" mat-button
+                            <!-- <a href="#" mat-button
                                 [disabled]="(checkbook.currentStatus?.checkbookStatus?.code=='bloqueada')"
                                 [routerLink]="['/checkbook']" [state]=checkbook class="btn"><i
-                                    class="fa fa-edit edit"></i></a>
+                                    class="fa fa-edit edit"></i></a> -->
                             <button type="button" [disabled]="(checkbook.currentStatus?.checkbookStatus?.code=='bloqueada')"
                                 (click)="changeStatusCheckbookConfirmation(checkbook, 'bloqueada', 'Bloqueada')"
                                 class="btn"><i class='fas fa-trash-alt delete'></i></button>

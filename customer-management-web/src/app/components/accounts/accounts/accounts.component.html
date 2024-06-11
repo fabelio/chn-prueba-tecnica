@@ -42,10 +42,10 @@
                                 [disabled]="(account.currentStatus?.accountStatus?.code=='bloqueada')"
                                 [routerLink]="['/checkbooks']" [state]=account class="btn"><i
                                     class='fas fa-eye view'></i></a>
-                            <a href="#" mat-button
+                            <!-- <a href="#" mat-button
                                 [disabled]="(account.currentStatus?.accountStatus?.code=='bloqueada')"
                                 [routerLink]="['/account']" [state]=customer class="btn"><i
-                                    class="fa fa-edit edit"></i></a>
+                                    class="fa fa-edit edit"></i></a> -->
                             <button type="button" [disabled]="(account.currentStatus?.accountStatus?.code=='bloqueada')"
                                 (click)="changeStatusAccountConfirmation(account, 'bloqueada', 'Bloqueada')"
                                 class="btn"><i class='fas fa-trash-alt delete'></i></button>

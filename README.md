@@ -11,3 +11,26 @@ Completed: ALTER DATABASE OPEN
 
 #para acceder a la aplicacion we se accede por el puerto 4200
 http://localhost:4200
+
+#Pantalla de gestion de clientes, con las siguientes opciones de izquierda a derecha
+# Ver cuentas del cliente
+# Editar cliente
+# Eliminar cliente
+![alt text](clientes.png)
+
+#Pantalla de gestion de cuentas, con las siguientes opciones de izquierda a derecha
+# Ver chequeras de la cuenta
+# Bloquear Cuenta
+# Activar cuenta
+![alt text](cuentas.png)
+
+#Pantalla de gestion de chequeras, con las siguientes opciones de izquierda a derecha
+# Ver cheques de la cuenta
+# Bloquear chequera
+# Activar chequera
+![alt text](chequeras.png)
+
+#Pantalla de gestion de cheques, con las siguientes opciones de izquierda a derecha
+# Bloquear chequera
+# Cobrar cheque
+![alt text](cheques.png)
