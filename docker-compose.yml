@@ -1,0 +1,41 @@
+services:
+  database:
+    image: oracle-chn
+    container_name: oracle-chn-db
+    build:
+      context: ./customer-management-db
+    ports:
+      - "1521:1521"
+      - "5500:5500"
+    environment:
+      - RACLE_PWD=chn123
+      - ORACLE_PDB=chn-customer
+    networks:
+      - backend-network
+  backend:
+    image: spring-chn
+    container_name: spring-chn-api
+    build:
+      context: ./customer-management-api
+    ports:
+      - "9090:9090"
+    depends_on:
+      - database
+    networks:
+      - backend-network
+      - frontend-network
+  frontend:
+    image: angular-chn
+    container_name: angular-chn-web
+    build:
+      context: ./customer-management-web
+    ports:
+      - "4200:80"
+    depends_on:
+      - backend
+    networks:
+      - frontend-network
+      
+networks:
+  backend-network:
+  frontend-network:

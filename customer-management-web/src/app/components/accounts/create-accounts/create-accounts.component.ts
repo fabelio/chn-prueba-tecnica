@@ -39,7 +39,8 @@ export class CreateAccountsComponent {
       this.account.customer = this.customer;
       this.accountService.createAccount(this.account).subscribe(async accountCreated => {
         if (accountCreated != null) {
-          this.createCheckbook(accountCreated);
+          if (this.account.accountType?.code == "monetaria")
+            this.createCheckbook(accountCreated);
           this.router.navigate(['accounts'], { state: this.customer });
         }
       }, async error => {
@@ -54,14 +55,6 @@ export class CreateAccountsComponent {
         this.accountTypes = accountTypes;
       }
     );
-  }
-
-  bloquearCuenta(account: Account) {
-
-  }
-
-  activarCuenta(account: Account) {
-
   }
 
   createCheckbook(account: Account) {
